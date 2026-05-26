@@ -1,6 +1,8 @@
 import express from 'express';
 import path from 'path';
+import fs from 'fs';
 import bcrypt from 'bcryptjs';
+
 import jwt from 'jsonwebtoken';
 import { createServer as createViteServer } from 'vite';
 import { db, User, Group, Message, ResourceLink, Notification, Request as JoinRequest } from './server/db';
@@ -956,7 +958,14 @@ async function startServer() {
     });
     app.use(vite.middlewares);
   } else {
-    const distPath = path.join(process.cwd(), 'dist');
+    let distPath = path.join(process.cwd(), 'dist');
+    if (!fs.existsSync(path.join(distPath, 'index.html'))) {
+      try {
+        if (typeof __dirname !== 'undefined') {
+          distPath = __dirname;
+        }
+      } catch (e) {}
+    }
     app.use(express.static(distPath));
     app.get('*', (req, res) => {
       res.sendFile(path.join(distPath, 'index.html'));
