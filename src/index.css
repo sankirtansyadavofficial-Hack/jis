@@ -17,6 +17,11 @@
   --color-slate-405: #64748b;
   --color-slate-550: #475569;
   --color-slate-850: #152033;
+
+  /* Fix for undefined custom palette colors */
+  --color-blue-750: #1a56db;
+  --color-indigo-805: #312e81;
+  --color-orange-55: #ffedd5;
 }
 
 @layer base {
@@ -37,10 +42,11 @@
 }
 
 .dark .glass-effect {
-  background: rgba(8, 12, 28, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: rgba(15, 20, 35, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
 .glass-card {
@@ -51,9 +57,10 @@
 }
 
 .dark .glass-card {
-  background: rgba(15, 23, 42, 0.45);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  background: rgba(20, 28, 48, 0.75);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.2);
 }
 
 .glass-card:hover {

@@ -113,6 +113,7 @@ export default function App() {
   const [pendingRequests, setPendingRequests] = useState<JoinRequest[]>([]);
   const [invites, setInvites] = useState<JoinRequest[]>([]);
   const [unreadsCount, setUnreadsCount] = useState(0);
+  const notificationsRef = useRef<HTMLDivElement>(null);
 
   function showToast(message: string, type: 'success' | 'error' | 'info' = 'info') {
     setToast({ message, type });
@@ -210,6 +211,21 @@ export default function App() {
       document.documentElement.classList.remove('dark');
     }
   }, [token, darkMode]);
+
+  // Click-Outside Listener to Close Notification Popover
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (notificationsRef.current && !notificationsRef.current.contains(event.target as Node)) {
+        setIsNotificationsOpen(false);
+      }
+    }
+    if (isNotificationsOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isNotificationsOpen]);
 
   // General data loading based on current selected visual tab
   useEffect(() => {
@@ -864,9 +880,11 @@ export default function App() {
             {token ? (
               <>
                 {/* Notifications Bell */}
-                <div className="relative">
+                <div className="relative" ref={notificationsRef}>
                   <button
-                    onClick={() => {
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
                       setIsNotificationsOpen(!isNotificationsOpen);
                       if (!isNotificationsOpen) {
                         handleMarkNotificationsRead();
@@ -959,7 +977,7 @@ export default function App() {
                           notifications.map((n) => (
                             <div key={n.id} className="p-2 bg-slate-50 dark:bg-slate-850 rounded-lg">
                               <p className="text-slate-700 dark:text-slate-300 leading-snug">{n.text}</p>
-                              <span className="text-[9px] text-slate-400 block mt-1">{new Date(n.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                              <span className="text-[9px] text-slate-400 block mt-1">{n.timestamp ? new Date(n.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : ''}</span>
                             </div>
                           ))
                         )}
@@ -1164,7 +1182,7 @@ export default function App() {
                     {/* Visual match simulation */}
                     <div className="space-y-4 relative">
                       {/* Peer A */}
-                      <div className="flex items-center justify-between bg-slate-50/50 dark:bg-slate-950/45 p-3 rounded-2xl border border-slate-100 dark:border-slate-900">
+                      <div className="flex items-center justify-between bg-white/80 dark:bg-slate-900/80 p-3 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
                         <div className="flex items-center gap-2.5">
                           <div className="h-9 w-9 bg-blue-150 text-blue-700 font-extrabold rounded-xl flex items-center justify-center font-display">
                             AS
@@ -1185,7 +1203,7 @@ export default function App() {
                       </div>
 
                       {/* Peer B */}
-                      <div className="flex items-center justify-between bg-slate-50/50 dark:bg-slate-950/45 p-3 rounded-2xl border border-slate-100 dark:border-slate-900">
+                      <div className="flex items-center justify-between bg-white/80 dark:bg-slate-900/80 p-3 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
                         <div className="flex items-center gap-2.5">
                           <div className="h-9 w-9 bg-indigo-150 text-indigo-750 font-extrabold rounded-xl flex items-center justify-center font-display">
                             PR
@@ -1277,7 +1295,7 @@ export default function App() {
             </section>
 
             {/* LIVE INTERACTIVE COMPATIBILITY MATCH SIMULATOR (Highly Premium Visualizer) */}
-            <section className="relative p-8 md:p-12 rounded-3xl overflow-hidden border border-slate-200/50 dark:border-slate-850 bg-white/40 dark:bg-slate-900/40 backdrop-blur-md max-w-5xl mx-auto shadow-xl">
+            <section className="relative p-8 md:p-12 rounded-3xl overflow-hidden border border-slate-200/50 dark:border-slate-700/50 bg-white/80 dark:bg-slate-900/85 backdrop-blur-xl max-w-5xl mx-auto shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
               <div className="absolute top-0 right-0 h-40 w-40 bg-indigo-500/5 rounded-full blur-3xl pointer-events-none" />
               
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -1442,7 +1460,7 @@ export default function App() {
                   </div>
 
                   {/* Diagnostic Ring / Percentage Output */}
-                  <div className="w-40 flex flex-col items-center justify-center text-center p-3 rounded-2xl bg-slate-50/50 dark:bg-slate-950/20 border border-slate-100 dark:border-slate-850">
+                  <div className="w-40 flex flex-col items-center justify-center text-center p-3 rounded-2xl bg-white/80 dark:bg-slate-850/80 border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow">
                     <p className="text-[9px] uppercase font-bold text-slate-400 tracking-wider mb-2">Simulated Score</p>
                     <div className="relative h-28 w-28 flex items-center justify-center">
                       <svg className="absolute w-full h-full transform -rotate-90">
@@ -1815,7 +1833,7 @@ export default function App() {
                     <div className="flex gap-2.5 mt-4">
                       <button
                         onClick={() => setCurrentTab('matcher')}
-                        className="px-4 py-2 bg-white text-blue-750 font-bold text-xs rounded-xl hover:bg-slate-50 shadow-md cursor-pointer transition-all"
+                        className="px-4 py-2 bg-white text-blue-700 font-bold text-xs rounded-xl hover:bg-slate-50 shadow-md cursor-pointer transition-all"
                       >
                         Explore Peers
                       </button>
@@ -1832,7 +1850,7 @@ export default function App() {
                   <CalendarWidget />
 
                   {/* Quick Guide to Study Modes Info Alert */}
-                  <div className="bg-white/40 dark:bg-slate-900/40 p-5 rounded-2xl border border-slate-100 dark:border-slate-800 flex gap-3.5 items-start">
+                  <div className="bg-white/80 dark:bg-slate-850/80 p-5 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-md flex gap-3.5 items-start transition-shadow">
                     <div className="p-2 bg-blue-100/60 text-blue-600 rounded-lg dark:bg-blue-900/20 dark:text-blue-400 mt-0.5">
                       <Info className="w-4 h-4" />
                     </div>
@@ -2357,7 +2375,7 @@ export default function App() {
                           <div key={m.id} className={`flex flex-col ${isMe ? 'items-end' : 'items-start'} space-y-1`}>
                             <div className="flex items-center gap-1.5">
                               <span className="text-[9px] font-bold text-slate-400 capitalize">{m.senderName}</span>
-                              <span className="text-[8px] text-slate-400 font-mono">{new Date(m.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                              <span className="text-[8px] text-slate-400 font-mono">{m.timestamp ? new Date(m.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : ''}</span>
                             </div>
                             <div className={`p-3 rounded-2xl max-w-sm text-xs leading-relaxed max-w-[85%] ${
                               isMe
@@ -2556,9 +2574,9 @@ export default function App() {
                 Guidelines & Safety
               </h4>
               <ul className="space-y-2 text-slate-500 dark:text-slate-450 font-medium">
-                <li><a href="#rules" className="hover:text-indigo-500 transition-colors">Academic Honesty Code</a></li>
-                <li><a href="#faculty" className="hover:text-indigo-500 transition-colors">Moderation Handbook</a></li>
-                <li><a href="#support" className="hover:text-indigo-500 transition-colors">Campus Help Desk</a></li>
+                <li><a href="#rules" onClick={(e) => e.preventDefault()} className="hover:text-indigo-500 transition-colors">Academic Honesty Code</a></li>
+                <li><a href="#faculty" onClick={(e) => e.preventDefault()} className="hover:text-indigo-500 transition-colors">Moderation Handbook</a></li>
+                <li><a href="#support" onClick={(e) => e.preventDefault()} className="hover:text-indigo-500 transition-colors">Campus Help Desk</a></li>
               </ul>
             </div>
 
@@ -2576,8 +2594,8 @@ export default function App() {
           <div className="pt-6 border-t border-slate-100 dark:border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[10px] text-slate-400">
             <span>Designed for JIS Group of Institutions © 2026</span>
             <div className="flex gap-4 font-semibold">
-              <a href="#terms" className="hover:text-indigo-500">Privacy Protocols</a>
-              <a href="#developer" className="hover:text-indigo-500">Core Developer Credits</a>
+              <a href="#terms" onClick={(e) => e.preventDefault()} className="hover:text-indigo-500">Privacy Protocols</a>
+              <a href="#developer" onClick={(e) => e.preventDefault()} className="hover:text-indigo-500">Core Developer Credits</a>
             </div>
           </div>
         </div>

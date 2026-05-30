@@ -120,7 +120,7 @@ export function AdminPanel({ token, currentUser, onRefreshTrigger }: AdminPanelP
   }
 
   return (
-    <div className="bg-white/60 dark:bg-slate-900/60 backdrop-blur-lg border border-white/40 dark:border-slate-800/40 rounded-3xl p-6 shadow-2xl">
+    <div className="bg-white/85 dark:bg-slate-900/85 backdrop-blur-xl border border-white/60 dark:border-slate-700/50 rounded-3xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-100 dark:border-slate-800/80">
         <div className="flex items-center gap-3">
           <div className="p-2.5 bg-gradient-to-tr from-blue-600 to-indigo-600 text-white rounded-xl shadow-md">
@@ -192,7 +192,7 @@ export function AdminPanel({ token, currentUser, onRefreshTrigger }: AdminPanelP
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Custom SVG Distribution chart 1 (Department representation) */}
-            <div className="bg-white/40 dark:bg-slate-850/30 border border-slate-100 dark:border-slate-800/40 rounded-2xl p-5">
+            <div className="bg-white/70 dark:bg-slate-850/70 border border-slate-200 dark:border-slate-700/60 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow">
               <h4 className="text-xs font-bold text-slate-700 dark:text-slate-350 uppercase tracking-wider mb-4">Department Enrollment Shares</h4>
               <div className="space-y-3">
                 {Object.entries(stats.departmentDistribution).map(([dept, rawCount]) => {
@@ -219,7 +219,7 @@ export function AdminPanel({ token, currentUser, onRefreshTrigger }: AdminPanelP
             </div>
 
             {/* Custom SVG Distribution chart 2 (Learning Style Spreads) */}
-            <div className="bg-white/40 dark:bg-slate-850/30 border border-slate-100 dark:border-slate-800/40 rounded-2xl p-5">
+            <div className="bg-white/70 dark:bg-slate-850/70 border border-slate-200 dark:border-slate-700/60 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow">
               <h4 className="text-xs font-bold text-slate-700 dark:text-slate-350 uppercase tracking-wider mb-4">Learning Style Spreads</h4>
               <div className="space-y-3">
                 {Object.entries(stats.learningStyleDistribution).map(([style, rawCount]) => {

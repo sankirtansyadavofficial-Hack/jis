@@ -170,7 +170,8 @@
       "members": [
         "u1",
         "u3",
-        "u2"
+        "u2",
+        "u_9pghzabfb"
       ],
       "resources": [
         {
@@ -205,7 +206,8 @@
       "creatorId": "u2",
       "members": [
         "u2",
-        "u1"
+        "u1",
+        "u_9pghzabfb"
       ],
       "resources": [
         {
@@ -262,6 +264,22 @@
       "senderName": "Rohit Das",
       "text": "I uploaded the Tailwind guide in our resources! Let me know if you guys find it helpful.",
       "timestamp": "2026-05-30T15:12:25.456Z"
+    },
+    {
+      "id": "sys_kto291ukx",
+      "groupId": "g1",
+      "senderId": "system",
+      "senderName": "JIS Companion Core",
+      "text": "Sankalp joined the study group!",
+      "timestamp": "2026-05-30T16:03:37.688Z"
+    },
+    {
+      "id": "sys_lu6jdai1f",
+      "groupId": "g2",
+      "senderId": "system",
+      "senderName": "JIS Companion Core",
+      "text": "Sankalp joined the study group!",
+      "timestamp": "2026-05-30T16:03:39.211Z"
     }
   ],
   "notifications": [
@@ -300,6 +318,33 @@
       "relativeId": "g1",
       "read": false,
       "timestamp": "2026-05-30T15:33:50.583Z"
+    },
+    {
+      "id": "n_tq81o48fw",
+      "userId": "u2",
+      "text": "Sankalp requested to join your study group \"Discrete Maths Doubts Crackers\".",
+      "type": "request",
+      "relativeId": "g2",
+      "read": false,
+      "timestamp": "2026-05-30T15:43:12.513Z"
+    },
+    {
+      "id": "n_2gy0wlib9",
+      "userId": "u_9pghzabfb",
+      "text": "Your request to join \"JIS Web Dev Titans\" has been accepted!",
+      "type": "accept",
+      "relativeId": "g1",
+      "read": false,
+      "timestamp": "2026-05-30T16:03:37.687Z"
+    },
+    {
+      "id": "n_vtl4m8wzf",
+      "userId": "u_9pghzabfb",
+      "text": "Your request to join \"Discrete Maths Doubts Crackers\" has been accepted!",
+      "type": "accept",
+      "relativeId": "g2",
+      "read": false,
+      "timestamp": "2026-05-30T16:03:39.209Z"
     }
   ],
   "requests": [
@@ -320,8 +365,18 @@
       "requesterId": "u_9pghzabfb",
       "requesterName": "Sankalp",
       "type": "join",
-      "status": "pending",
+      "status": "accepted",
       "timestamp": "2026-05-30T15:33:50.581Z"
+    },
+    {
+      "id": "req_ndxytgf6n",
+      "groupId": "g2",
+      "groupName": "Discrete Maths Doubts Crackers",
+      "requesterId": "u_9pghzabfb",
+      "requesterName": "Sankalp",
+      "type": "join",
+      "status": "accepted",
+      "timestamp": "2026-05-30T15:43:12.499Z"
     }
   ]
 }
