@@ -275,12 +275,12 @@ export function AdminPanel({ token, currentUser, onRefreshTrigger }: AdminPanelP
                       />
                       <div>
                         <p className="font-semibold">{std.name}</p>
-                        <p className="text-[10px] text-slate-400">{std.email}</p>
+                        <p className="text-[10px] text-slate-400 dark:text-slate-350">{std.email}</p>
                       </div>
                     </div>
                   </td>
                   <td className="p-3 font-medium">
-                    {std.department} • <span className="font-sans font-normal text-[11px] text-slate-500">{std.semester} Sem</span>
+                    {std.department} • <span className="font-sans font-normal text-[11px] text-slate-500 dark:text-slate-450">{std.semester} Sem</span>
                   </td>
                   <td className="p-3">
                     <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-blue-50 text-blue-800 dark:bg-blue-900/20 dark:text-blue-300">
@@ -296,7 +296,7 @@ export function AdminPanel({ token, currentUser, onRefreshTrigger }: AdminPanelP
                         Admin
                       </span>
                     ) : (
-                      <span className="text-[9px] opacity-75">Student</span>
+                      <span className="text-[9px] text-slate-550 dark:text-slate-300 font-medium">Student</span>
                     )}
                   </td>
                   <td className="p-3 text-right space-x-1">

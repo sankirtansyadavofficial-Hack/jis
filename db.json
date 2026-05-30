@@ -124,6 +124,36 @@
       "lastActiveDate": "2026-05-30T15:27:25.456Z",
       "isAdmin": true,
       "createdAt": "2026-02-19T15:27:25.456Z"
+    },
+    {
+      "id": "u_9pghzabfb",
+      "name": "Sankalp",
+      "email": "sankirtansyadavofficial@gmail.com",
+      "passwordHash": "$2b$10$qzPTBxW89zbvtMukfiStE.AmUsJotvwDZWnR3GWeuQuyP0l9gczNO",
+      "department": "CSE",
+      "semester": "6th",
+      "subjects": [
+        "Data Structures"
+      ],
+      "goals": "",
+      "learningStyle": "Visual",
+      "availability": {
+        "days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "times": [
+          "Evening"
+        ]
+      },
+      "avatarUrl": "https://api.dicebear.com/7.x/avataaars/svg?seed=Sankalp",
+      "streakDays": 1,
+      "lastActiveDate": "2026-05-30T15:31:41.295Z",
+      "isAdmin": false,
+      "createdAt": "2026-05-30T15:31:41.295Z"
     }
   ],
   "groups": [
@@ -189,6 +219,23 @@
       ],
       "isOnline": false,
       "createdAt": "2026-05-25T15:27:25.456Z"
+    },
+    {
+      "id": "g_p5a3y4dn1",
+      "name": "CSE",
+      "subject": "Data Structures",
+      "department": "CSE",
+      "semester": "6th",
+      "learningStyle": "Visual",
+      "description": "lets study",
+      "rules": "Open for all ",
+      "creatorId": "u_9pghzabfb",
+      "members": [
+        "u_9pghzabfb"
+      ],
+      "resources": [],
+      "isOnline": true,
+      "createdAt": "2026-05-30T15:33:32.819Z"
     }
   ],
   "messages": [
@@ -235,6 +282,24 @@
       "relativeId": "g1",
       "read": true,
       "timestamp": "2026-05-30T14:27:25.456Z"
+    },
+    {
+      "id": "n_ljig2pdmc",
+      "userId": "u_9pghzabfb",
+      "text": "Your study group 'CSE' has been compiled successfully. Invite peers to begin collaboration!",
+      "type": "system",
+      "relativeId": "g_p5a3y4dn1",
+      "read": true,
+      "timestamp": "2026-05-30T15:33:32.821Z"
+    },
+    {
+      "id": "n_1uurnc6ue",
+      "userId": "u1",
+      "text": "Sankalp requested to join your study group \"JIS Web Dev Titans\".",
+      "type": "request",
+      "relativeId": "g1",
+      "read": false,
+      "timestamp": "2026-05-30T15:33:50.583Z"
     }
   ],
   "requests": [
@@ -247,6 +312,16 @@
       "type": "join",
       "status": "accepted",
       "timestamp": "2026-05-30T11:27:25.456Z"
+    },
+    {
+      "id": "req_1oe63qw95",
+      "groupId": "g1",
+      "groupName": "JIS Web Dev Titans",
+      "requesterId": "u_9pghzabfb",
+      "requesterName": "Sankalp",
+      "type": "join",
+      "status": "pending",
+      "timestamp": "2026-05-30T15:33:50.581Z"
     }
   ]
 }

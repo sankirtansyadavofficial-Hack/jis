@@ -254,12 +254,16 @@ export default function App() {
     }
   }, [currentTab, activeGroup]);
 
-  // Scroll chat boards on updates
+  // Scroll chat boards when entering workspace study room
   useEffect(() => {
-    if (chatBottomRef.current) {
-      chatBottomRef.current.scrollIntoView({ behavior: 'smooth' });
+    if (currentTab === 'workspace') {
+      setTimeout(() => {
+        if (chatBottomRef.current) {
+          chatBottomRef.current.scrollIntoView({ behavior: 'auto' });
+        }
+      }, 100);
     }
-  }, [activeGroup?.messages]);
+  }, [currentTab, activeGroupId]);
 
   // Light/Dark mode togglers
   const toggleDarkMode = () => {
@@ -576,6 +580,12 @@ export default function App() {
         messages: [...(prev.messages || []), optimisticMsg]
       };
     });
+
+    setTimeout(() => {
+      if (chatBottomRef.current) {
+        chatBottomRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 80);
 
     try {
       const res = await fetch(`/api/groups/${activeGroupId}/messages`, {

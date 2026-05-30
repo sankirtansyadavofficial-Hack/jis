@@ -1,10 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Outfit", "Inter", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Custom cohesive premium slate colors */
+  --color-slate-55: #f8fafc;
+  --color-slate-85: #152033;
+  --color-slate-105: #ebf0f5;
+  --color-slate-150: #ebf0f5;
+  --color-slate-205: #cbd5e1;
+  --color-slate-405: #64748b;
+  --color-slate-550: #475569;
+  --color-slate-850: #152033;
 }
 
 @layer base {
