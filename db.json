@@ -4,7 +4,7 @@
       "id": "u1",
       "name": "Ananya Sen",
       "email": "ananya.sen@jis.edu",
-      "passwordHash": "$2a$10$W65R8KxKzscS9Ea0T9XU9OF2fRscgC7X8aMHeZ.1xM.sZ8H8XmUo2",
+      "passwordHash": "$2a$10$HPTo0jgkHP3OppbpmqsigOzeFgqnYFn2QHaCKiv9CWqhH2cMbu4gC",
       "department": "CSE",
       "semester": "6th",
       "subjects": [
@@ -28,15 +28,15 @@
       },
       "avatarUrl": "https://api.dicebear.com/7.x/avataaars/svg?seed=Ananya",
       "streakDays": 8,
-      "lastActiveDate": "2026-05-25T20:23:25.731Z",
+      "lastActiveDate": "2026-05-30T15:27:25.455Z",
       "isAdmin": false,
-      "createdAt": "2026-04-25T20:23:25.732Z"
+      "createdAt": "2026-04-30T15:27:25.456Z"
     },
     {
       "id": "u2",
       "name": "Rohit Das",
       "email": "rohit.das@jis.edu",
-      "passwordHash": "$2a$10$W65R8KxKzscS9Ea0T9XU9OF2fRscgC7X8aMHeZ.1xM.sZ8H8XmUo2",
+      "passwordHash": "$2a$10$HPTo0jgkHP3OppbpmqsigOzeFgqnYFn2QHaCKiv9CWqhH2cMbu4gC",
       "department": "IT",
       "semester": "4th",
       "subjects": [
@@ -60,15 +60,15 @@
       },
       "avatarUrl": "https://api.dicebear.com/7.x/avataaars/svg?seed=Rohit",
       "streakDays": 5,
-      "lastActiveDate": "2026-05-25T20:23:25.732Z",
+      "lastActiveDate": "2026-05-30T15:27:25.456Z",
       "isAdmin": false,
-      "createdAt": "2026-04-30T20:23:25.732Z"
+      "createdAt": "2026-05-05T15:27:25.456Z"
     },
     {
       "id": "u3",
       "name": "Priyanka Roy",
       "email": "priyanka.roy@jis.edu",
-      "passwordHash": "$2a$10$W65R8KxKzscS9Ea0T9XU9OF2fRscgC7X8aMHeZ.1xM.sZ8H8XmUo2",
+      "passwordHash": "$2a$10$HPTo0jgkHP3OppbpmqsigOzeFgqnYFn2QHaCKiv9CWqhH2cMbu4gC",
       "department": "ECE",
       "semester": "6th",
       "subjects": [
@@ -90,15 +90,15 @@
       },
       "avatarUrl": "https://api.dicebear.com/7.x/avataaars/svg?seed=Priyanka",
       "streakDays": 12,
-      "lastActiveDate": "2026-05-25T20:23:25.732Z",
+      "lastActiveDate": "2026-05-30T15:27:25.456Z",
       "isAdmin": false,
-      "createdAt": "2026-04-15T20:23:25.732Z"
+      "createdAt": "2026-04-20T15:27:25.456Z"
     },
     {
       "id": "u_admin",
       "name": "Prof. S. Ghosal (JIS Admin)",
       "email": "admin@jis.edu",
-      "passwordHash": "$2a$10$W65R8KxKzscS9Ea0T9XU9OF2fRscgC7X8aMHeZ.1xM.sZ8H8XmUo2",
+      "passwordHash": "$2a$10$HPTo0jgkHP3OppbpmqsigOzeFgqnYFn2QHaCKiv9CWqhH2cMbu4gC",
       "department": "CSE",
       "semester": "Faculty",
       "subjects": [
@@ -121,9 +121,9 @@
       },
       "avatarUrl": "https://api.dicebear.com/7.x/avataaars/svg?seed=Admin",
       "streakDays": 45,
-      "lastActiveDate": "2026-05-25T20:23:25.732Z",
+      "lastActiveDate": "2026-05-30T15:27:25.456Z",
       "isAdmin": true,
-      "createdAt": "2026-02-14T20:23:25.732Z"
+      "createdAt": "2026-02-19T15:27:25.456Z"
     }
   ],
   "groups": [
@@ -149,7 +149,7 @@
           "url": "https://react.dev",
           "sharedBy": "Ananya Sen",
           "sharedByUserId": "u1",
-          "timestamp": "2026-05-22T20:23:25.732Z"
+          "timestamp": "2026-05-27T15:27:25.456Z"
         },
         {
           "id": "r2",
@@ -157,11 +157,11 @@
           "url": "https://tailwindcss.com",
           "sharedBy": "Priyanka Roy",
           "sharedByUserId": "u3",
-          "timestamp": "2026-05-23T20:23:25.732Z"
+          "timestamp": "2026-05-28T15:27:25.456Z"
         }
       ],
       "isOnline": true,
-      "createdAt": "2026-05-15T20:23:25.732Z"
+      "createdAt": "2026-05-20T15:27:25.456Z"
     },
     {
       "id": "g2",
@@ -184,11 +184,11 @@
           "url": "https://arxiv.org",
           "sharedBy": "Rohit Das",
           "sharedByUserId": "u2",
-          "timestamp": "2026-05-24T20:23:25.732Z"
+          "timestamp": "2026-05-29T15:27:25.456Z"
         }
       ],
       "isOnline": false,
-      "createdAt": "2026-05-20T20:23:25.732Z"
+      "createdAt": "2026-05-25T15:27:25.456Z"
     }
   ],
   "messages": [
@@ -198,7 +198,7 @@
       "senderId": "u1",
       "senderName": "Ananya Sen",
       "text": "Hey everyone! Welcome to the JIS Web Dev Titans study group! Ready to design our hackathon project?",
-      "timestamp": "2026-05-25T18:23:25.732Z"
+      "timestamp": "2026-05-30T13:27:25.456Z"
     },
     {
       "id": "m2",
@@ -206,7 +206,7 @@
       "senderId": "u3",
       "senderName": "Priyanka Roy",
       "text": "Yes, Ananya! Let's schedule a study session for Monday evening regarding React state management.",
-      "timestamp": "2026-05-25T19:23:25.732Z"
+      "timestamp": "2026-05-30T14:27:25.456Z"
     },
     {
       "id": "m3",
@@ -214,7 +214,7 @@
       "senderId": "u2",
       "senderName": "Rohit Das",
       "text": "I uploaded the Tailwind guide in our resources! Let me know if you guys find it helpful.",
-      "timestamp": "2026-05-25T20:08:25.732Z"
+      "timestamp": "2026-05-30T15:12:25.456Z"
     }
   ],
   "notifications": [
@@ -225,7 +225,7 @@
       "type": "request",
       "relativeId": "g1",
       "read": false,
-      "timestamp": "2026-05-25T08:23:25.732Z"
+      "timestamp": "2026-05-30T03:27:25.456Z"
     },
     {
       "id": "n2",
@@ -234,7 +234,7 @@
       "type": "accept",
       "relativeId": "g1",
       "read": true,
-      "timestamp": "2026-05-25T19:23:25.732Z"
+      "timestamp": "2026-05-30T14:27:25.456Z"
     }
   ],
   "requests": [
@@ -246,7 +246,7 @@
       "requesterName": "Rohit Das",
       "type": "join",
       "status": "accepted",
-      "timestamp": "2026-05-25T16:23:25.732Z"
+      "timestamp": "2026-05-30T11:27:25.456Z"
     }
   ]
 }

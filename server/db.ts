@@ -136,7 +136,7 @@ const initialData: DatabaseSchema = {
       name: "Ananya Sen",
       email: "ananya.sen@jis.edu",
       // hashed for 'student123'
-      passwordHash: "$2a$10$W65R8KxKzscS9Ea0T9XU9OF2fRscgC7X8aMHeZ.1xM.sZ8H8XmUo2",
+      passwordHash: "$2a$10$HPTo0jgkHP3OppbpmqsigOzeFgqnYFn2QHaCKiv9CWqhH2cMbu4gC",
       department: "CSE",
       semester: "6th",
       subjects: ["Data Structures", "Web Development", "Operating Systems"],
@@ -156,7 +156,7 @@ const initialData: DatabaseSchema = {
       id: "u2",
       name: "Rohit Das",
       email: "rohit.das@jis.edu",
-      passwordHash: "$2a$10$W65R8KxKzscS9Ea0T9XU9OF2fRscgC7X8aMHeZ.1xM.sZ8H8XmUo2",
+      passwordHash: "$2a$10$HPTo0jgkHP3OppbpmqsigOzeFgqnYFn2QHaCKiv9CWqhH2cMbu4gC",
       department: "IT",
       semester: "4th",
       subjects: ["Database Systems", "Core Java", "Discrete Mathematics"],
@@ -176,7 +176,7 @@ const initialData: DatabaseSchema = {
       id: "u3",
       name: "Priyanka Roy",
       email: "priyanka.roy@jis.edu",
-      passwordHash: "$2a$10$W65R8KxKzscS9Ea0T9XU9OF2fRscgC7X8aMHeZ.1xM.sZ8H8XmUo2",
+      passwordHash: "$2a$10$HPTo0jgkHP3OppbpmqsigOzeFgqnYFn2QHaCKiv9CWqhH2cMbu4gC",
       department: "ECE",
       semester: "6th",
       subjects: ["Microprocessors", "Web Development", "Digital Communication"],
@@ -196,7 +196,7 @@ const initialData: DatabaseSchema = {
       id: "u_admin",
       name: "Prof. S. Ghosal (JIS Admin)",
       email: "admin@jis.edu",
-      passwordHash: "$2a$10$W65R8KxKzscS9Ea0T9XU9OF2fRscgC7X8aMHeZ.1xM.sZ8H8XmUo2", // student123
+      passwordHash: "$2a$10$HPTo0jgkHP3OppbpmqsigOzeFgqnYFn2QHaCKiv9CWqhH2cMbu4gC", // student123
       department: "CSE",
       semester: "Faculty",
       subjects: ["All Subjects"],

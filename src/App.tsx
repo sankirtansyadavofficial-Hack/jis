@@ -26,7 +26,9 @@ import {
   Moon,
   CheckCircle,
   HelpCircle,
-  Info
+  Info,
+  Menu,
+  X
 } from 'lucide-react';
 
 import { User, Group, Message, Notification, JoinRequest } from './types';
@@ -105,10 +107,17 @@ export default function App() {
 
   // Notifications Sidebar / Alerts
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [pendingRequests, setPendingRequests] = useState<JoinRequest[]>([]);
   const [invites, setInvites] = useState<JoinRequest[]>([]);
   const [unreadsCount, setUnreadsCount] = useState(0);
+
+  function showToast(message: string, type: 'success' | 'error' | 'info' = 'info') {
+    setToast({ message, type });
+    setTimeout(() => setToast(null), 3500);
+  }
 
   // Share note / upload notes resources
   const [noteTitle, setNoteTitle] = useState('');
@@ -491,7 +500,7 @@ export default function App() {
         headers: getHeaders()
       });
       const data = await res.json();
-      alert(data.message || 'Request processed!');
+      showToast(data.message || 'Request processed!', res.ok ? 'success' : 'error');
       fetchGroupsList();
       loadNotificationCenter();
     } catch (e) {
@@ -625,7 +634,7 @@ export default function App() {
   async function handleCreateGroupSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!newGroupName || !newGroupSubject || !newGroupDesc) {
-      alert('Group Name, Subject, and Description are required.');
+      showToast('Group Name, Subject, and Description are required.', 'error');
       return;
     }
 
@@ -647,7 +656,7 @@ export default function App() {
 
       const data = await res.json();
       if (res.ok) {
-        alert('✓ Study Group created! Enter the workspace to begin.');
+        showToast('🎉 Study Group created! Enter the workspace to begin.', 'success');
         setNewGroupName('');
         setNewGroupSubject('');
         setNewGroupDesc('');
@@ -671,7 +680,7 @@ export default function App() {
         body: JSON.stringify({ action })
       });
       const d = await res.json();
-      alert(d.message || 'Action saved.');
+      showToast(d.message || 'Action saved.', res.ok ? 'success' : 'error');
       loadNotificationCenter();
       if (currentTab === 'groups') fetchGroupsList();
     } catch (e) {
@@ -682,7 +691,7 @@ export default function App() {
   // Direct Peer study request invite
   async function handleInvitePeer(targetId: string) {
     if (!token) {
-      alert('Please log in to contact study partners!');
+      showToast('Please log in to contact study partners!', 'info');
       return;
     }
     // Present choice of groups to invite to if user has groups they manage
@@ -706,7 +715,7 @@ export default function App() {
         body: JSON.stringify({ groupId: firstGroup.id, targetUserId: targetId })
       });
       const data = await res.json();
-      alert(data.message || 'Invitation sent!');
+      showToast(data.message || 'Invitation sent!', res.ok ? 'success' : 'error');
     } catch (err) {
       console.error(err);
     }
@@ -974,6 +983,15 @@ export default function App() {
                     <LogOut className="w-4 h-4" />
                     <span className="hidden sm:inline">Logout</span>
                   </button>
+
+                  {/* Mobile Menu Toggle Button */}
+                  <button
+                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    className="md:hidden p-2 rounded-xl bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-slate-600 dark:text-slate-350 transition-all cursor-pointer"
+                    title="Toggle Mobile Menu"
+                  >
+                    {isMobileMenuOpen ? <X className="w-4 h-4 text-rose-500" /> : <Menu className="w-4 h-4" />}
+                  </button>
                 </div>
               </>
             ) : (
@@ -990,6 +1008,67 @@ export default function App() {
             )}
           </div>
         </div>
+
+        {/* Mobile Dropdown Navigation Menu */}
+        {token && isMobileMenuOpen && (
+          <div className="md:hidden glass-effect border-t border-black/5 dark:border-white/5 px-6 py-4 space-y-2.5 font-sans text-xs font-semibold animate-fade-in shadow-inner">
+            <button
+              onClick={() => {
+                setCurrentTab('home');
+                setIsMobileMenuOpen(false);
+              }}
+              className={`w-full text-left py-2.5 px-3.5 rounded-xl transition-all cursor-pointer block ${
+                currentTab === 'home'
+                  ? 'bg-blue-600 text-white shadow-md'
+                  : 'text-slate-600 dark:text-slate-300 hover:bg-black/5 dark:hover:bg-white/5'
+              }`}
+            >
+              Dashboard
+            </button>
+            <button
+              onClick={() => {
+                setCurrentTab('matcher');
+                setIsMobileMenuOpen(false);
+              }}
+              className={`w-full text-left py-2.5 px-3.5 rounded-xl transition-all cursor-pointer block ${
+                currentTab === 'matcher'
+                  ? 'bg-blue-600 text-white shadow-md'
+                  : 'text-slate-600 dark:text-slate-300 hover:bg-black/5 dark:hover:bg-white/5'
+              }`}
+            >
+              Find Partners
+            </button>
+            <button
+              onClick={() => {
+                setCurrentTab('groups');
+                setIsMobileMenuOpen(false);
+              }}
+              className={`w-full text-left py-2.5 px-3.5 rounded-xl transition-all cursor-pointer block ${
+                currentTab === 'groups'
+                  ? 'bg-blue-600 text-white shadow-md'
+                  : 'text-slate-600 dark:text-slate-300 hover:bg-black/5 dark:hover:bg-white/5'
+              }`}
+            >
+              Study Groups
+            </button>
+            {user?.isAdmin && (
+              <button
+                onClick={() => {
+                  setCurrentTab('admin');
+                  setIsMobileMenuOpen(false);
+                }}
+                className={`w-full text-left py-2.5 px-3.5 rounded-xl transition-all cursor-pointer flex items-center gap-1.5 ${
+                  currentTab === 'admin'
+                    ? 'bg-blue-600 text-white shadow-md'
+                    : 'text-slate-600 dark:text-slate-300 hover:bg-black/5 dark:hover:bg-white/5'
+                }`}
+              >
+                <ShieldCheck className="w-4 h-4 text-indigo-500" />
+                Admin Panel
+              </button>
+            )}
+          </div>
+        )}
       </header>
 
       {/* ==================== HOME / DASHBOARD / LANDING ==================== */}
@@ -1220,7 +1299,7 @@ export default function App() {
                 </div>
 
                 {/* Simulator Inputs & Ring Visual */}
-                <div className="lg:col-span-7 bg-white dark:bg-slate-900/80 border border-slate-150/30 dark:border-slate-850 p-6 rounded-2xl shadow-xl flex flex-col md:flex-row gap-6 items-center">
+                <div className="lg:col-span-5 bg-white dark:bg-slate-900/80 border border-slate-150/30 dark:border-slate-850 p-6 rounded-2xl shadow-xl flex flex-col md:flex-row gap-6 items-center">
                   
                   {/* Select Options */}
                   <div className="flex-1 space-y-4 w-full">
@@ -2700,6 +2779,20 @@ export default function App() {
               </form>
             )}
 
+          </div>
+        </div>
+      )}
+
+      {/* Premium Toast Notification */}
+      {toast && (
+        <div className="fixed bottom-6 right-6 z-50 p-4 rounded-2xl glass-effect border border-indigo-500/20 shadow-2xl animate-fade-in flex items-center gap-3 font-sans text-xs font-semibold max-w-sm">
+          <div className={`h-6 w-6 rounded-full flex items-center justify-center text-white ${
+            toast.type === 'success' ? 'bg-emerald-500' : toast.type === 'error' ? 'bg-rose-500' : 'bg-blue-500'
+          }`}>
+            {toast.type === 'success' ? '✓' : toast.type === 'error' ? '!' : 'i'}
+          </div>
+          <div className="text-slate-800 dark:text-slate-100 flex-1">
+            {toast.message}
           </div>
         </div>
       )}
